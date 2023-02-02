@@ -1,0 +1,66 @@
+
+ <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+    <h3 class="h3">Lista de Pets Cadastrados</h3>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+        <button type="button" class="btn btn-sm btn-outline-secondary" (click)="makeCSV()">Exportar CSV</button>
+        <button  type="button" class="btn btn-sm btn-outline-secondary" (click)="makePdf()">Exportar PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="input-group" ng-controller="listcontroller">
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" placeholder="Pesquise na tabela" />
+</div>
+  <table tableResize class="table caption-top table-bordered" id="content" #content style="margin-top:15px;">
+    <thead>
+      <tr>
+        <th scope="col" (click)="sort('id')">ID&nbsp;<i class="bi bi-arrow-down-up"></i></th>
+        <th scope="col" (click)="sort('nome')">Nome&nbsp;<i class="bi bi-arrow-down-up"></i></th>
+        <th scope="col" (click)="sort('idade')">Idade&nbsp;<i class="bi bi-arrow-down-up"></i></th>
+        <th scope="col" (click)="sort('sexo')">Sexo&nbsp;<i class="bi bi-arrow-down-up"></i></th>
+        <th scope="col" (click)="sort('especie')">Espécie&nbsp;<i class="bi bi-arrow-down-up"></i></th>
+        <th scope="col" (click)="sort('raca')">Raça&nbsp;<i class="bi bi-arrow-down-up"></i></th>
+        <th scope="col" (click)="sort('tamanho')">Tamanho&nbsp;<i class="bi bi-arrow-down-up"></i></th>
+        <th scope="col" (click)="sort('cor')">Cor&nbsp;<i class="bi bi-arrow-down-up"></i></th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let pet of pets | filter:searchText | paginate: { itemsPerPage: 8, currentPage: p } | orderBy: key:reverse">
+        <td>{{ pet.id}}</td>
+        <td>{{ pet.nome}}</td>
+        <td>{{ pet.idade}}</td>
+        <td>{{ pet.sexo}}</td>
+        <td>{{ pet.especie}}</td>
+        <td>{{ pet.raca}}</td>
+        <td>{{ pet.tamanho}}</td>
+        <td>{{ pet.cor}}</td>
+        <td>
+          <button class="btn btn-sm btn-danger" (click)="open(mymodal)">Deletar</button>
+        </td>
+
+        <ng-template #mymodal let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Excluir Pet</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')" style="border: none;">
+              <span aria-hidden="true">X</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Você tem certeza que deseja excluir o pet {{ pet.nome}}?
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="modal.close('Save click')" id="button-modal">Fechar</button>
+          <button type="button" class="btn btn-danger" (click)="deletarPets(pet.id);"(click)="modal.close('Save click')" id="button-modal">Excluir</button>
+          </div>
+        </ng-template>
+      </tr>
+    </tbody>
+
+  </table>
+
+<div><pagination-controls (pageChange)="p = $event"></pagination-controls></div>
+  </main>
+

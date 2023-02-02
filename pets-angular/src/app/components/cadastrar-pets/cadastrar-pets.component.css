@@ -1,0 +1,24 @@
+
+@import 'ngx-toastr/toastr';
+
+h3{
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color:dimgrey;
+  text-shadow: 13px 13px 13px #757575 ;
+}
+
+
+form{
+  color: dimgray;
+}
+
+ .lado{
+  display: flex;
+  align-items:flex-end;
+  justify-content: space-between;
+
+
+}
+

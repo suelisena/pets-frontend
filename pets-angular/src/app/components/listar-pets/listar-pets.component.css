@@ -1,0 +1,28 @@
+/*
+th{
+  background-color: #cbd1d8;
+}*/
+
+
+::ng-deep
+  .ngx-pagination{
+    display:flex;
+    justify-content: center;
+    align-items: center !important;
+  }
+
+
+  .ngx-pagination li{
+    width: 35px;
+    height: 35px;
+  }
+
+.bi-arrow-down-up{
+  font-size: 13px;
+  font-weight: bold;
+
+}
+
+h3{
+text-shadow: 13px 13px 13px #757575 ;
+}

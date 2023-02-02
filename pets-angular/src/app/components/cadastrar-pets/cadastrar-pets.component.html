@@ -1,0 +1,55 @@
+
+
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+  <h3>Cadastre um novo pet</h3>
+  <form  [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="col-md-12 mb-3">
+        <label for="validationCustom01">Nome</label>
+        <input type="text" class="form-control" id="nome" placeholder="" value=""
+        formControlName="nome" [(ngModel)]="pets.nome" name="nome">
+      </div>
+      <div class="col-md-12 mb-4">
+        <label for="validationCustom02">Raça</label>
+        <input type="text" class="form-control" id="raca" placeholder="" value=""
+        formControlName="raca" [(ngModel)]="pets.raca" name="raca">
+      </div>
+      <div class="col-md-12 mb-3">
+        <label for="validationCustomUsername">Espécie</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="validationCustomUsername" placeholder="" aria-describedby="inputGroupPrepend"
+          formControlName="especie" [(ngModel)]="pets.especie" name="especie">
+        </div>
+      </div>
+      <div class="col-md-12 mb-3">
+        <label for="validationCustom03">Tamanho</label>
+        <input type="text" class="form-control" id="validationCustom03" placeholder=""
+        formControlName="tamanho" [(ngModel)]="pets.tamanho" name="tamanho">
+      </div>
+    </div>
+
+    <div class="form-row lado">
+      <div class="col-md-3 mb-3">
+        <label for="validationCustom04">Cor</label>
+        <input type="text" class="form-control" id="validationCustom04" placeholder=""
+        formControlName="cor" [(ngModel)]="pets.cor" name="cor">
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="validationCustom05">Idade</label>
+        <input type="text" class="form-control" id="validationCustom05" placeholder=""
+        formControlName="idade" [(ngModel)]="pets.idade" name="idade">
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="validationCustom05">Sexo</label>
+        <select id="inputState" class="form-control" formControlName="sexo" [(ngModel)]="pets.sexo" name="sexo">
+          <option selected>Escolha</option>
+          <option>Feminino</option>
+          <option>Masculino</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit" style="margin-top: 20px;width: 20%;">Enviar</button>
+    <p *ngIf='mensagem != ""' class="alert alert-primary mt-2">{{ mensagem }}</p>
+  </form>
+  </main>
